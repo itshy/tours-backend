@@ -17,27 +17,14 @@
 const Database = use('Database')
 const Route = use('Route')
 
+
 Route.group(() => {
-  Route.get('test', 'TestController.index')
+  Route.post('tours', 'TourController.index')
+  Route.get('getTours', 'TourController.getTours')
+  Route.post('CommentController', 'TourController.comment')
+  Route.get('getComments', 'TourController.getComments')
+  Route.post('MakeOrderController', 'TourController.makeOrderController')
+  Route.get('SortByPriceUp', 'TourController.sortByPriceUpController')
+  Route.get('SortByPriceDown', 'TourController.sortByPriceDownController')
+  Route.get('LoadMore', 'TourController.loadMoreController')
 }).prefix('api/v1')
-
-Route.post('tours', 'TourController.index')
-
-Route.get('getTours', async () => {
-  return await Database
-    .table('tours')
-    .select('*')
-    .limit(3)
-})
-
-Route.post('CommentController', 'CommentController.index')
-
-Route.get('getComments', 'GetCommentController.index')
-
-Route.post('MakeOrderController', 'MakeOrderController.index')
-
-Route.get('SortByPriceUp', 'SortByPriceUpController.index')
-
-Route.get('SortByPriceDown', 'SortByPriceDownController.index')
-
-Route.get('LoadMore', 'LoadMoreController.index')
